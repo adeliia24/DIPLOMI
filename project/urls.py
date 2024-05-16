@@ -13,7 +13,10 @@ urlpatterns = [
     #path('sign_up', include('apps.sign_up.urls')),
     path('users/', include('django.contrib.auth.urls')),
     path('users/', include('apps.users.urls')),
-    path('profile/', include('apps.userProfile.urls'))
+    path('profile/', include('apps.userProfile.urls')),
+    path('chefs/', include('apps.chefs.urls')),
+    path('blog/', include('apps.blog.urls')),
+
 
 ]
 

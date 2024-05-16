@@ -19,9 +19,9 @@ def menu(request):
     return render(request, 'menu.html', context)
 
 
-def category_menu(request, slug):
+def category_menu(request, pk):
 
-    foods = get_object_or_404(Food, slug=slug)
+    foods = get_object_or_404(Food, id=pk)
     context = {
         'foods': foods
     }

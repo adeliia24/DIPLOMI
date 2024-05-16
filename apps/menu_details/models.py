@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import  reverse
+from django.contrib.auth.models import User
 class Category(models.Model):
     name=models.CharField("название", max_length=50)
     slug=models.SlugField(max_length=100)
@@ -32,3 +33,13 @@ class Food(models.Model):
 
     def get_absolute_url(self):
         return reverse('menu_details', kwargs={'slug': self.slug})
+
+
+class Comments(models.Model):
+    food=models.ForeignKey(Food,  models.CASCADE,related_name='foodsComment',)
+    user=models.ForeignKey(User,  models.CASCADE, related_name='commentUser',)
+    body=models.CharField(max_length=255)
+    date=models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural='Комметнарии к блюде'

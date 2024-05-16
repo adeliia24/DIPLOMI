@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     'apps.menu_details',
     'apps.sign_up',
     'apps.users',
-    'apps.userProfile'
+    'apps.userProfile',
+    'apps.chefs',
+    'apps.blog',
+
 ]
 
 MIDDLEWARE = [

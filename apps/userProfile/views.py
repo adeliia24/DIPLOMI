@@ -15,24 +15,22 @@ def profile(request):
     return render(request, 'profile.html', context)
 
 
-def editProfile(request):
+def editprofile(request):
+    profile = get_object_or_404(Member, user=request.user)
+
     if request.method == 'POST':
-        profile = get_object_or_404(Member, user=request.user)
-        form = MemberForm(request.POST)
+        form = MemberForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
-            new_prof = form.save(commit=False)
-            new_prof.user = request.user
-            new_prof.save()
-            return reverse_lazy('home')
+            form.save()
+            return redirect('profile')  # Подставьте имя вашего URL-шаблона для перенаправления после успешного сохранения
     else:
-        profile = get_object_or_404(Member, user=request.user)
         form = MemberForm(instance=profile)
 
     context = {
         'form': form,
         'profile': profile
     }
-    return render(request, 'editProfile.html', context)
+    return render(request, 'editprofile.html', context)
 
 
 class EditProfileView(generic.UpdateView):

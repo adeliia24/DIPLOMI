@@ -8,7 +8,7 @@
                 <div class="breadcrumb_text">
                     <h1>Изменить профиль</h1>
                     <ul>
-                        <li><a href="index.html">home</a></li>
+                        <li><a href="{% url 'home' %}">home</a></li>
                         <li><a href="#">dashboard</a></li>
                     </ul>
                 </div>
@@ -57,36 +57,36 @@
                     <div class="col-xl-9 col-lg-8 wow fadeInUp" data-wow-duration="1s">
                         <div class="dashboard_content">
                             <div class="dashboard_body">
-                                <h3>edit information<a class="dash_add_new_address" href="dashboard.html">cancel</a>
+                                <h3>Обновление данных <a class="dash_add_new_address" href="dashboard.html">cancel</a>
                                 </h3>
 
                                 <div class="dash_personal_info">
                                     <div class="dash_personal_info_edit comment_input p-0 mb_0">
-                                        <form method="post" enctype="multipart/form-data"  >
+                                        <form method="post" enctype="multipart/form-data" action="{% url 'editprofile' %}"> >
                                             {% csrf_token %}
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="comment_imput_single">
-                                                        <label>name</label>
-                                                        <input type="text" placeholder="{{ profile.name }}">
+                                                        <label>Имя</label>
+                                                        <input type="text" placeholder="{{ profile.name }}" name="name">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-6">
                                                     <div class="comment_imput_single">
-                                                        <label>email</label>
-                                                        <input type="email" placeholder="{{ profile.email }}">
+                                                        <label>Электронная почта</label>
+                                                        <input type="email" placeholder="{{ profile.email }}" name="email">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-6">
                                                     <div class="comment_imput_single">
-                                                        <label>phone</label>
-                                                        <input type="text" placeholder="{{ profile.phone }}">
+                                                        <label>телефон номер</label>
+                                                        <input type="text" placeholder="{{ profile.phone }}" name="phone">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-12">
                                                     <div class="comment_imput_single">
-                                                        <label>address</label>
-                                                        <textarea rows="4" placeholder="{{ profile.address}}"></textarea>
+                                                        <label>Адрес</label>
+                                                        <input type="text" placeholder="{{ profile.address }}" name="address">
                                                     </div>
                                                     <button type="submit" class="common_btn">submit</button>
                                                 </div>
